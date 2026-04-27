@@ -1,14 +1,21 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "ECSExample",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "pixi-filters": "^6.1.5",
+    "pixi.js": "^8.18.1",
+    "thyseus": "^0.18.0"
+  },
   "devDependencies": {
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "vite": "^8.0.10"
   },
   "private": true
 }
