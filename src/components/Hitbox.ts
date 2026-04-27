@@ -1,6 +1,8 @@
 import { Graphics as PixiGraphics} from "pixi.js";
 import vec2 from "./vec2";
 
+
+/** Hitbox class which allows for an object to be selected by the mouse click */
 export default class Hitbox
 {
     public hitbox : PixiGraphics;
