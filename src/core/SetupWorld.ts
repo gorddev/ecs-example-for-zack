@@ -19,7 +19,6 @@ import Path from "../components/paths/Path";
 import FixedPath from "../components/paths/FixedPath";
 import Filters from "../components/Filters";
 import RotationalVelocity from "../components/movement/RotationalVelocity";
-import MapID from "../components/MapID";
 
 
 export default async function SetupWorld(app: Application): Promise<World> {
@@ -36,12 +35,22 @@ export default async function SetupWorld(app: Application): Promise<World> {
 
     let vel = new Velocity(1, 1);
     let e = world.spawn()
-        .add(new MSprite("/player.png", vec2.make(0, 0)))
+        .add(MSprite.make("/player.png", vec2.make(0, 0)))
         .add(vel)
         .add(new Path(
-            [new FixedPath(vec2.make(0, 0), vec2.make(100, 0), 5),
-            new FixedPath(vec2.make(100, 0), vec2.make(100, 100), 5),
-            new FixedPath(vec2.make(100, 100), vec2.make(200, 200), 5),]));
+            [
+                new FixedPath(vec2.make(0, 0),      vec2.make(100, 0),  2),
+                new FixedPath(vec2.make(100, 0),    vec2.make(100, 100),2),
+                new FixedPath(vec2.make(100, 100),  vec2.make(200, 200),2),
+                new FixedPath(vec2.make(200, 200),  vec2.make(0, 0),    2),
+                new FixedPath(vec2.make(0, 0),      vec2.make(500, 500),2),
+            ]
+
+        ));
+
+    let myFilter = new TwistFilter();
+    myFilter.offset.x = 0.5;
+    e.add(new Filters([[myFilter]]));
 
     app.ticker.add(() => {
         vel.mul(0.90);
