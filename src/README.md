@@ -1,20 +1,25 @@
 ## src
 
-Contains the main source code for the project. This folder is split into components, systems, and core setup code.
-`main.ts` is the application entry point and connects the Pixi application with the ECS world.
+Contains the main source code for the project.
 
-#### ║:: `./components`::║ {dir}
-Contains all components that can be added onto entities.
-Components store data or behavior used by systems, such as sprites, velocity, paths, filters, and helper vector types.
+`main.ts` is the application entry point. It starts the Pixi application, initializes the ECS world, and begins the update process.
 
-#### ║:: `./core`::║ {dir}
-Contains the central setup and runtime code for the application.
-This includes the camera container, world setup, update loop, and setup helpers used to initialize the project.
+#### ║:: `./core`::║ 〘Dir〙
+Contains core setup and runtime code for the application.
 
-#### ║:: `./systems`::║ {dir}
-Contains ECS systems that update entities with matching components.
-For example, movement systems update entities with velocity components, while path and filter systems update entities with paths or filters.
+This includes the Pixi application instance, shared camera/container setup, and asset loading helpers.
+
+#### ║:: `./ecs`::║ 〘Dir〙
+Contains the Entity Component System code.
+
+This folder includes ECS initialization, the main updater, components, and systems.
+
+#### ║:: `./pixi`::║ 〘Dir〙
+Contains Pixi-specific helper code.
+
+This includes rendering-related helpers that are separate from the core application setup and ECS logic.
 
 #### ║:: `./main.ts`::║ 〈File〉
 Entry point for the application.
-Creates and starts the Pixi application, initializes the world, and begins the main update process.
+
+Creates and starts the Pixi application, initializes the ECS world, and begins the main update loop.
